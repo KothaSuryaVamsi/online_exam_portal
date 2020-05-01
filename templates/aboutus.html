@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="a.css" />
+  <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Sans">
+
+  <style type="text/css">
+   .btn-default {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(108, 88, 179, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(108, 89, 179, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-default:hover {
+  color: #FFF;
+  background: rgba(108, 88, 179, 0.75);
+  border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+.btn-primary {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(58, 133, 191, 0.75);
+  border-radius: 40px;
+  background: #FFF;
+  transition: all 0.3s ease 0s;
+}
+.btn-success {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(20, 179, 20, 0.75);
+  border-radius: 40px;
+  background: #FFF;
+  transition: all 0.3s ease 0s;
+}
+
+
+.btn-primary:hover {
+  color: #FFF;
+  background: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    .icon-bar{
+      background: #fff;
+    }
+    a{
+      color: white;
+      letter-spacing: 1px;
+
+    }
+
+
+    .navbar-brand{
+      letter-spacing: 2px;
+    }
+    footer{
+  color: #d5d5d5;
+  background-color: #3f3f3f;
+  padding: .8rem;
+}
+@media (min-width: 768px)
+{
+
+
+
+
+/*body{
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+	 position: relative;
+
+	height: 500px;
+
+   display: inline-flex;
+	justify-content: space-between;
+	align-items: center;
+
+
+}*/
+body{
+
+}
+
+.btn{
+	background: #fff;
+}
+.btn-social-icon{
+
+	border-radius: 30%;
+}
+.btn-social-icon{
+color: blue;
+}
+
+
+.zoomin img {
+      height: 200px;
+      width: 200px;
+      -webkit-transition: all 2s ease;
+      -moz-transition: all 2s ease;
+      -ms-transition: all 2s ease;
+      transition: all 2s ease;
+    }
+    .zoomin img:hover {
+      width: 300px;
+      height: 300px;
+    }
+nav{
+	font-family: 'Josefin Sans', sans-serif;
+	min-height: 8vh;
+
+}
+
+.card-body{
+	transition: width 2s, height 4s;
+
+}
+/*.container-fluid .card:nth-child(1):before
+{
+	background: #ff56ac;
+}*/
+.btn-social-icon:hover{
+    transform: scale(1.5);
+
+  }
+.card-body{
+	border: 1px;
+	border-color: white;
+}
+}
+#padding{
+  padding-bottom: 20px;
+}
+
+
+  </style>
+
+</head>
+<body>
+  <nav class="navbar  navbar-expand-sm bg-primary ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+         <br>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        {% load static %}
+        <a class="navbar-brand mr-auto navbar-left" href="#"><img src="{% static 'images/capture4.jpg' %}" height="70" width="170"/></a>
+          </div>
+          <br>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#"><span class="fa fa-home fa-lg"></span>Home</a></li>
+          <li><a href="{%url 'online:aboutus'%}"><span class="fa fa-info fa-lg"></span>Aboutus</a></li>
+          <li><a href="#"><span class="fa fa-address-card fa-lg"></span>Contact</a></li>
+        </ul>
+        <br><ul class="nav navbar-nav navbar-right ">
+          <li> <button  type="button" class="btn btn-primary  pull-right"   data-target="#loginmodal" data-toggle="modal">Login</button></li>
+            <li> <button  type="button" class="btn btn-success  pull-right"   data-target="#signupmodal" data-toggle="modal">Sign-up</button></li>
+
+            </ul>
+ </div>
+    </div><br>
+  </nav>
+
+
+  <div class="container-fluid padding" id="top">
+    <div class="row padding">
+<center><div class="col-12">
+        <h2> Meet Our Team</h2>
+              <hr class="light">
+              </center>
+
+      </div>
+    </div>
+  </div>
+
+      <div class="container-fluid zoomin">
+        <div class="row text-center">
+              <div class="col-md-4">
+            <div class="card">
+                {% load static %}
+              <img class="card-image-top" src="{% static 'images/somesh.jpg' %}" height="250" width="210">
+                  <div class="card-body">
+                <h4 class="card-title">Mr.Somesh</h4>
+                  <p class="card-text"> ACM faculty co-ordinator</p>
+                   <div class="row text-center">
+             <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+               <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a></div>
+        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+      </div>
+    </div>
+  </div>
+             <div class="col-md-4">
+            <div class="card">
+                {% load static %}
+              <img class="card-image-top" src="{% static 'images/vamsi.png' %}" height="250" width="210">
+                  <div class="card-body">
+                <h4 class="card-title">Mr.Vamsi</h4>
+                  <p class="card-text">Full stack devloper</p>
+                   <div class="row text-center">
+             <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+               <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a></div>
+        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-4">
+            <div class="card">
+                {% load static %}
+              <img class="card-image-top" src="{% static 'images/sandeep.png' %}" height="250" width="210">
+                  <div class="card-body">
+                <h4 class="card-title">Mr.Sandeep</h4>
+                  <p class="card-text">Full stack devloper</p>
+                   <div class="row text-center">
+             <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+               <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a></div>
+        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+      </div>
+    </div>
+  </div>
+            <hr>
+  <div class="col-md-4">
+            <div class="card">
+                {% load static %}
+              <img class="card-image-top" src="{% static 'images/madhu.jpeg' %}" height="250" width="210">
+                  <div class="card-body">
+                <h4 class="card-title">Mr.Madhu</h4>
+                  <p class="card-text">Full stack devloper</p>
+                   <div class="row text-center">
+             <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+               <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a></div>
+        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-md-4">
+            <div class="card">
+                {% load static %}
+              <img class="card-image-top" src="{% static 'images/asritha.jpeg' %}" height="250" width="210">
+                  <div class="card-body">
+                <h4 class="card-title">Ms.Asritha</h4>
+                  <p class="card-text">Full stack devloper</p>
+                   <div class="row text-center">
+             <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+               <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a></div>
+        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-4">
+            <div class="card">
+                {% load static %}
+              <img class="card-image-top" src="{% static 'images/sandhya.jpeg' %}" height="250" width="210">
+                  <div class="card-body">
+                <h4 class="card-title">Ms.Sandhya</h4>
+                  <p class="card-text">Full stack devloper</p>
+                   <div class="row text-center">
+             <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+               <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a></div>
+        <a href="#" class="btn btn-outline-secondary">See Profile</a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</div>
+</div>
+<div class="container-fluid" id="padding">
+  <div class="row text-center padding">
+    <div class="col-12">
+      <h2>Connect Us With</h2>
+      <div class="col-12 social padding">
+        <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+        <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<footer id="foot">
+  <div class="container-fluid" id="padding">
+    <div class="row text-center">
+      <div class="col-md-4">
+        <img src="acmlogo.png" height="75" width="150">
+        <hr class="light">
+        <div>
+            <h5>Links</h5>
+            <ul style="list-style-type: none;">
+              <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg"></span> Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About</a></li>
+              <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li></ul>
+</ul>
+        </div>
+
+
+      </div>
+      <div class="col-md-4">
+        <hr class="light">
+        <h2> Our address</h2>
+        <hr class="light">
+
+        </address>
+        <address>
+          GMR Nagar,Rajam <br>
+          Srikakulam, Andhra Pradesh<br>
+          532127<br>
+          <i class="fa fa-phone fa-lg"></i>: +91 9010509741<br>
+          <i class="fa fa-fax fa-lg"></i>: +852 8765 4321<br>
+          <i class="fa fa-envelope fa-lg"></i>:
+          <a href="mailto:sandeepkulukuri98@gmail.com">sandeepkulukuri98@gmail.com</a>
+        </address>
+
+
+
+      </div>
+      <div class="col-md-4">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>© Copyright 2019 ACM GMRIT</p>
+
+      </div>
+
+    </div>
+  </div>
+
+</footer>
+ 
+</body>
+</html>s

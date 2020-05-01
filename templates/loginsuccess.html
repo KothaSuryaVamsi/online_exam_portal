@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ONLINE EXAM PORTAL</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+<!--<script type="text/javascript" >
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>-->
+
+    <style>
+    #display{
+    padding-bottom: 20px;
+    }
+               .btn-default {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(108, 88, 179, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(108, 89, 179, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-default:hover {
+  color: #FFF;
+  background: rgba(108, 88, 179, 0.75);
+  border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+.btn-primary {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(58, 133, 191, 0.75);
+  border-radius: 40px;
+  background: #FFF;
+  transition: all 0.3s ease 0s;
+}
+.btn-success {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(20, 179, 20, 0.75);
+  border-radius: 40px;
+  background: #FFF;
+  transition: all 0.3s ease 0s;
+}
+
+
+.btn-primary:hover {
+  color: #FFF;
+  background: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+
+.card{
+  border: #FFF;
+}
+.modal-body{
+  font-weight: 400;
+}
+.carousel-inner img {
+      width: 50%; /* Set width to 100% */
+      margin: auto;
+      min-height:100px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none;
+    }
+
+    }
+    a{
+    color: #fff;
+
+    }
+
+    footer{
+  color: #d5d5d5;
+  background-color: #3f3f3f;
+  padding: .8rem;
+}
+    </style>
+
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-expand-sm bg-primary ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+         <br>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        {% load static %}
+        <a class="navbar-brand mr-auto navbar-left" href="#"><img src="{% static 'images/capture4.jpg' %}" height="70" width="170"></a>
+          </div>
+          <br>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#"><span class="fa fa-home fa-lg"></span>Home</a></li>
+          <li><a href="{% url 'online:students' %}"><span class="fa fa-info fa-lg"></span>Aboutus</a></li>
+          <li><a href="{% url 'online:students' %}"><span class="fa fa-address-card fa-lg"></span>Contact</a></li>
+        </ul>
+        <br><ul class="nav navbar-nav navbar-right ">
+            {{name10}}{{emailid}}
+          <li><a href="{% url 'online:profile' %}"><span class="fa fa-info fa-lg"></span>Profile</a></li>
+          <li><a href="{% url 'online:logout' %}"><span class="fa fa-info fa-lg"></span>Logout</a></li>
+            </ul>
+ </div>
+    </div><br>
+  </nav>
+
+<center><div class="search-container  my-3 d-flex justify-content-center" id="display">
+    <form  method="post" action="search ">
+        {% csrf_token %}
+
+<input type="hidden" name="emailid" value={{ name10 }}>
+      <input type="text" placeholder="Search.." name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</center>
+
+    {% for i in available %}
+        {% for j in data %}
+            {% ifequal i j.name  %}
+
+
+
+
+                <div class="col-md-12" id="display">
+                    {{ j.name }}
+                    <a href="{% url 'online:gotosub' j.name emailid %}">
+                        <img src="{{ j.hotel_Main_Img.url }}" class="img-responsive" style="width: 200px ;height:200px; float: left; margin-right: 10px;" /></a>
+                </div>
+            {% endifequal %}
+        {% endfor %}
+    {% endfor %}
+
+
+
+
+
+                        <div>
+                        </div>
+                    </div>
+                </div>
+
+<div class="container text-center">
+  <h3>U can Search Also</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Current Project</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Current Project</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Current Project</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Current Project</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Current Project</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Current Project</p>
+    </div>
+    <div class="col-sm-4">
+      <div class="well">
+       <p>Some text..</p>
+      </div>
+    </div>
+      <div class="col-sm-4">
+      <div class="well">
+       <p>Some text..</p>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+
+ <footer id="foot">
+  <div class="container-fluid" id="padding">
+    <div class="row text-center">
+      <div class="col-md-4">
+          {% load static %}
+        <img src="{% static 'images/capture4.jpg' %}" height="75" width="150">
+        <hr class="light">
+        <div>
+            <h5>Links</h5>
+            <ul style="list-style-type: none;">
+              <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg"></span> Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About</a></li>
+              <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li></ul>
+</ul>
+        </div>
+
+
+      </div>
+      <div class="col-md-4">
+        <hr class="light">
+        <h2> Our address</h2>
+        <hr class="light">
+
+        </address>
+        <address>
+          GMR Nagar,Rajam <br>
+          Srikakulam, Andhra Pradesh<br>
+          532127<br>
+          <i class="fa fa-phone fa-lg"></i>: +91 9010509741<br>
+          <i class="fa fa-fax fa-lg"></i>: +852 8765 4321<br>
+          <i class="fa fa-envelope fa-lg"></i>:
+          <a href="mailto:sandeepkulukuri98@gmail.com">sandeepkulukuri98@gmail.com</a>
+        </address>
+
+
+
+      </div>
+      <div class="col-md-4">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>© Copyright 2019 ACM GMRIT</p>
+
+      </div>
+
+    </div>
+  </div>
+
+</footer>
+
+  </body>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ONLINE EXAM PORTAL</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript">
+        function validate(form1)
+        {
+        try{
+            var pass=document.getElementById('signpass').value;
+            var conf=document.getElementById('signconf').value;
+            var emaill=document.getElementById('signemail').value;
+            }
+            catch(e)
+            {
+            alert("wrongly gave names"+ e.description);
+            }
+            check3=new RegExp("[a-zA-Z0-9]@[a-z]{3,}\.[a-z]{2,}","g");
+            if(emaill.length==0){
+                 document.getElementById("signup_email_check").innerHTML="enter email";
+                 return false;
+                 }
+            else
+            document.getElementById("signup_email_check").innerHTML="";
+            if(!emaill.match(check3))
+            {
+                document.getElementById("signup_email_check").innerHTML="enter a correct mail";
+                return false;
+            }
+            else
+            document.getElementById("signup_email_check").innerHTML="";
+            if(pass.length==0){
+                document.getElementById("signup_pass_check").innerHTML="enter password";
+                return false;
+                }
+            else
+            document.getElementById("signup_pass_check").innerHTML="";
+
+            if(pass.length<8){
+            document.getElementById("signup_pass_check").innerHTML="password should contain atleast 8 characters";
+            return false;
+            }
+            else
+            document.getElementById("signup_pass_check").innerHTML="";
+
+
+            var c=0,s=0,n=0,sym=0,i;
+            for(i=0;i<pass.length;i++)
+            {
+                var ass = pass.charCodeAt(i);
+                if(ass>=58 && ass<=64)
+                sym=1;
+                if(ass<=47)
+                {
+                    sym=1;
+                }
+                else if(ass>=48 && ass<=57)
+                {
+                    n=1;
+                }
+                else if(ass>=65 && ass<=90)
+                {
+                    c=1;
+                }
+                else if(ass>=97 && ass<=122)
+                {
+                    s=1;
+                }
+
+            }
+            if(c==0){
+            document.getElementById("signup_pass_check").innerHTML="Password must contain atleast one Capital letter";
+            return false;
+            }
+            else
+            document.getElementById("signup_pass_check").innerHTML="";
+            if(s==0){
+            document.getElementById("signup_pass_check").innerHTML="Password must contain atleast one Small letter";
+            return false;
+            }
+            else
+            document.getElementById("signup_pass_check").innerHTML="";
+            if(n==0){
+            document.getElementById("signup_pass_check").innerHTML="Password must contain atleast one Number";
+            return false;
+            }
+            else
+            document.getElementById("signup_pass_check").innerHTML="";
+            if(sym==0){
+            document.getElementById("signup_pass_check").innerHTML="Password must contain atleast one Symbol letter";
+            return false;
+            }
+            else
+            document.getElementById("signup_pass_check").innerHTML="";
+            if(conf.length==0){
+                document.getElementById("signup_cpass_check").innerHTML="enter conform password";
+                return false;
+                }
+            else
+            document.getElementById("signup_pass_check").innerHTML="";
+            if(conf.length<8){
+            document.getElementById("signup_cpass_check").innerHTML="password should contain atleast 8 characters";
+            return false;
+            }
+            else
+            document.getElementById("signup_cpass_check").innerHTML="";
+            if(pass!=conf){
+            document.getElementById("signup_cpass_check").innerHTML="Password and Conform Password should be same";
+            return false;
+            }
+            else
+            document.getElementById("signup_cpass_check").innerHTML="";
+        return true;
+        }
+        function validate2(form2)
+        {
+            alert("hi");
+            return false;
+        }
+    </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+
+  <style>
+    <style>
+               .btn-default {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(108, 88, 179, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(108, 89, 179, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-default:hover {
+  color: #FFF;
+  background: rgba(108, 88, 179, 0.75);
+  border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+.btn-primary {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(58, 133, 191, 0.75);
+  border-radius: 40px;
+  background: #FFF;
+  transition: all 0.3s ease 0s;
+}
+.btn-success {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(20, 179, 20, 0.75);
+  border-radius: 40px;
+  background: #FFF;
+  transition: all 0.3s ease 0s;
+}
+
+
+.btn-primary:hover {
+  color: #FFF;
+  background: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+
+.card{
+  border: #FFF;
+}
+.modal-body{
+  font-weight: 400;
+}
+.search-container input [type=text]{
+border-radius: 20px;
+}
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none;
+    }
+
+    }
+
+    a{
+    color: #fff;
+
+    }
+    footer{
+  color: #d5d5d5;
+  background-color: #3f3f3f;
+  padding: .8rem;
+}
+
+    </style>
+    <script type="text/javascript" >
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-expand-sm bg-primary ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+         <br>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        {% load static %}
+        <a class="navbar-brand mr-auto navbar-left" href="#"><img src="{% static 'images/capture4.jpg' %}" height="70" width="170"/></a>
+          </div>
+          <br>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#"><span class="fa fa-home fa-lg"></span>Home</a></li>
+          <li><a href="{%url 'online:aboutus'%}"><span class="fa fa-info fa-lg"></span>Aboutus</a></li>
+          <li><a href="#"><span class="fa fa-address-card fa-lg"></span>Contact</a></li>
+        </ul>
+        <br><ul class="nav navbar-nav navbar-right ">
+          <li> <button  type="button" class="btn btn-primary  pull-right"   data-target="#loginmodal" data-toggle="modal">Login</button></li>
+            <li> <button  type="button" class="btn btn-success  pull-right"   data-target="#signupmodal" data-toggle="modal">Sign-up</button></li>
+
+            </ul>
+ </div>
+    </div><br>
+  </nav>
+  {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class=".body">
+ <div class="container" >
+   <div class="row-team">
+
+
+      <!-- Modal -->
+<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="dialog">
+    <!--Content-->
+    <div class="modal-content form-elegant" >
+
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Sign in</strong></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body mx-4">
+        <!--Body-->
+          <form name="form2" method="post" action="login2">
+              {% csrf_token %}
+                {% if vamsii %}
+<center><p>Invalid Username or Password</p></center>
+{% endif %}
+        <div class="col-xs-12">
+  <div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+
+          <input type="email" id="Form-email1" class="form-control border-top-0 border-left-0 border-right-0" placeholder="Email-id" name="email" required>
+  </div></div>
+
+
+<div class="col-xs-12">
+
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+          <input type="password" id="Form-pass1" class="form-control border-top-0 border-left-0 border-right-0" placeholder="Password" name="pwd" required>
+
+</div></div>
+              <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
+              Password?</a></p>
+
+        <div class="text-center mb-3">
+          <input type="submit" class="btn blue-gradient btn-block bg-success btn-rounded z-depth-1a" value="Sign in" >
+        </div>
+              </form>
+        <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Sign in
+          with:</p>
+
+        <div class="row my-3 d-flex pull-right">
+            <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+          <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+           <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a></div>
+      </div><br>
+      <!--Footer-->
+      <div class="modal-footer mx-5 pt-3 mb-1">
+        <p class="font-small grey-text d-flex justify-content-end">Not a member?
+          <button  type="button" class="btn btn-success"   data-target="#signupmodal" data-toggle="modal">Sign-up</button>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="dialog">
+      <!--Content-->
+      <div class="modal-content form-elegant" >
+
+        <!--Header-->
+        <div class="modal-header text-center">
+          <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Sign Up</strong></h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <p>Please fill the details for create account...</p>
+        </div>
+        <!--Body-->
+        <div class="modal-body mx-4">
+          <!--Body-->
+     <form name="form1" method="post" action="register">
+         {% csrf_token %}
+         {% if vamsi %}
+<center><p>the email is already registered. Try another email</p></center>
+{% endif %}
+
+          <div class="col-xs-12">
+  <div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input type="type" id="signemail" class="form-control border-top-0 border-left-0 border-right-0" placeholder="Email-id" name="email" >
+              <span id="signup_email_check"></span>
+  </div></div>
+
+
+<div class="col-xs-12">
+
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+            <input type="password" id="signpass" class="form-control border-top-0 border-left-0 border-right-0" placeholder="Password" name="pwd" >
+              <span id="signup_pass_check"></span>
+</div></div>
+
+<div class="col-xs-12">
+
+<div class="input-group">
+<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+
+              <input type="password" id="signconf" class="form-control border-top-0 border-left-0 border-right-0" placeholder=" Repeat Password" name="cpwd">
+              <span id="signup_cpass_check"></span>
+</div></div>
+
+          <div class="text-center mb-3">
+            <input type="submit" class="btn blue-gradient btn-block bg-success btn-rounded z-depth-1a" value="Register" onclick="return validate(this)">
+          </div>
+     </form>
+          <p class="font-small dark-grey-text text-right d-flex justify-content-center mb-3 pt-2"> or Login
+            with:</p>
+
+          <div class="row my-3 d-flex pull-right">
+              <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+            <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+             <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a></div>
+        </div><br>
+
+        <!--Footer-->
+        <div class="modal-footer mx-5 pt-3 mb-1">
+          <p class="font-small grey-text d-flex justify-content-end">Not a member?
+            <button  type="button" class="btn btn-primary"   data-target="#loginmodal" data-toggle="modal">Login</button>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+
+        <!-- Modal -->
+<div class="modal fade" id="adminmodel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="dialog">
+    <!--Content-->
+    <div class="modal-content form-elegant" >/*style="background-image: url('bg-1.jpg');"*/>
+
+      <!--Header-->
+      <div class="modal-header text-center">
+        <h3 class="modal-title w-100 dark-grey-text font-weight-bold my-3" id="myModalLabel"><strong>Admin</strong></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body mx-4">
+        <!--Body-->
+          <form name="form2" method="post" action="admin">
+              {% csrf_token %}
+        <div class="md-form mb-5">
+          <input type="text" id="Form-email1" class="form-control border-top-0 border-left-0 border-right-0" placeholder="Username" name="username" required>
+         </div>
+
+        <div class="md-form pb-3">
+          <input type="password" id="Form-pass1" class="form-control border-top-0 border-left-0 border-right-0" placeholder="Password" name="pwd" required>
+          <p class="font-small blue-text d-flex justify-content-end">Forgot <a href="#" class="blue-text ml-1">
+              Password?</a></p>
+        </div>
+
+        <div class="text-center mb-3">
+          <input type="submit" class="btn blue-gradient btn-block bg-success btn-rounded z-depth-1a" value="Login">
+        </div>
+              </form>
+
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+
+</div>
+</div>
+
+
+                        <div>
+                        </div>
+                    </div>
+                </div>
+
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+          {% load static %}
+        <img src="{% static 'images/cse.png' %}" style="width: 100% ; height: 600px;" alt="Image">
+        <div class="carousel-caption">
+          <h3>C.S.E</h3>
+          <p></p>
+        </div>
+      </div>
+
+      <div class="item">
+          {% load static %}
+        <img src="{% static 'images/mech.jpg' %}"  style="width: 100% ; height: 600px;" alt="Image">
+        <div class="carousel-caption">
+          <h3>MECH</h3>
+          <p></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+
+<div class="container text-center">
+  <h3>Relative Subjects</h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Python</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Python</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Python</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Python</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Python</p>
+    </div>
+      <div class="col-sm-4">
+                        {% load static %}
+      <img src="{% static 'images/python.jpg' %}" class="img-responsive" style="width:100%" alt="Image">
+      <p>Python</p>
+    </div>
+    <div class="col-sm-4">
+      <div class="well">
+       <p>For more details click on image of a course</p>
+      </div>
+    </div>
+      <div class="col-sm-4">
+      <div class="well">
+       <p>For more Courses please login or signup</p>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+  <br><br>
+
+ <footer id="foot">
+  <div class="container-fluid" id="padding">
+    <div class="row text-center">
+      <div class="col-md-4">
+          {% load static %}
+        <img src="{% static 'images/capture4.jpg' %}" height="75" width="150">
+        <hr class="light">
+        <div>
+            <h5>Links</h5>
+            <ul style="list-style-type: none;">
+              <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-home fa-lg"></span> Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="./aboutus.html"><span class="fa fa-info fa-lg"></span> About</a></li>
+              <li class="nav-item"><a class="nav-link" href="./contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li></ul>
+</ul>
+        </div>
+
+
+      </div>
+      <div class="col-md-4">
+        <hr class="light">
+        <h2> Our address</h2>
+        <hr class="light">
+
+        </address>
+        <address>
+          GMR Nagar,Rajam <br>
+          Srikakulam, Andhra Pradesh<br>
+          532127<br>
+          <i class="fa fa-phone fa-lg"></i>: +91 9010509741<br>
+          <i class="fa fa-fax fa-lg"></i>: +852 8765 4321<br>
+          <i class="fa fa-envelope fa-lg"></i>:
+          <a href="mailto:sandeepkulukuri98@gmail.com">sandeepkulukuri98@gmail.com</a>
+        </address>
+
+
+
+      </div>
+      <div class="col-md-4">
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>© Copyright 2019 ACM GMRIT</p>
+
+      </div>
+
+    </div>
+  </div>
+
+</footer>
+  </body>

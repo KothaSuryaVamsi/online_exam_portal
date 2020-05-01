@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ADMIN PAGE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    <style>
+               .btn-default {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(108, 88, 179, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(108, 89, 179, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-default:hover {
+  color: #FFF;
+  background: rgba(108, 88, 179, 0.75);
+  border: 2px solid rgba(108, 89, 179, 0.75);
+}
+
+.btn-primary {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(58, 133, 191, 0.75);
+  border-radius: 40px;
+  background: #FFF;
+  transition: all 0.3s ease 0s;
+}
+.btn-success {
+  font-family: Raleway-SemiBold;
+  font-size: 13px;
+  color: rgba(58, 133, 191, 0.75);
+  letter-spacing: 1px;
+  line-height: 15px;
+  border: 2px solid rgba(20, 179, 20, 0.75);
+  border-radius: 40px;
+  background: #FFF;
+  transition: all 0.3s ease 0s;
+}
+
+
+.btn-primary:hover {
+  color: #FFF;
+  background: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
+}
+
+.card{
+  border: #FFF;
+}
+.modal-body{
+  font-weight: 400;
+}
+.carousel-inner img {
+      width: 50%; /* Set width to 100% */
+      margin: auto;
+      min-height:100px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none;
+    }
+
+    }
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-expand-sm bg-primary ">
+    <div class="container-fluid">
+      <div class="navbar-header">
+       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+         <br>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        {% load static %}
+        <a class="navbar-brand mr-auto navbar-left" href="#"><img src="{% static 'images/capture4.jpg' %}" height="70" width="170"></a>
+         </div>
+          <br>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#"><span class="fa fa-home fa-lg"></span>Home</a></li>
+          <li><a href="#"><span class="fa fa-info fa-lg"></span>Aboutus</a></li>
+          <li><a href="#"><span class="fa fa-address-card fa-lg"></span>Contact</a></li>
+        </ul>
+        <br><ul class="nav navbar-nav navbar-right ">
+
+          <li><a href="{% url 'online:addque' %}"><span class="fa fa-address-card fa-lg"></span>Add Questions</a></li>
+          <li><a href="{% url 'online:showque' %}"><span class="fa fa-address-card fa-lg"></span>Show Questions</a></li>
+          <li><a href="{% url 'online:image_upload' %}"><span class="fa fa-address-card fa-lg"></span>Add Subjects</a></li>
+          <li><a href="{% url 'online:hotel_images' %}"><span class="fa fa-address-card fa-lg"></span>Subjects</a></li>
+          <li><a href="{% url 'online:students' %}"><span class="fa fa-address-card fa-lg"></span>Students</a></li>
+          <li><a href="{% url 'online:astu' %}"><span class="fa fa-address-card fa-lg"></span>About Students</a></li>
+          <li><a href="{% url 'online:logout' %}"><span class="fa fa-address-card fa-lg"></span>Logout</a></li>
+
+
+            </ul>
+ </div>
+    </div>
+  </div><br>
+  </nav>
+<table border="1" cellspacing="10" cellpadding="10">
+    <tr><th>Subject Name</th><th>Subject Image</th></tr>
+    {% for hotel in hotel_images %}
+        <tr>
+            <div class="col-md-4">
+                <td>
+                    {{ hotel.name }}</td>
+                <td>
+                     <img src="{{ hotel.hotel_Main_Img.url }}" class="img-responsive" style="width: 25%;height:25%; float: left; margin-right: 10px;" /><br>
+                </td>
+
+            </div>
+        </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
